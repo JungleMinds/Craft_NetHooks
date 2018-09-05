@@ -1,0 +1,37 @@
+{
+    "name": "jungleminds/nethooks",
+    "description": "Add Deploy hooks for Netlify",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "nethooks"
+    ],
+    "support": {
+        "docs": "https://github.com/JungleMinds/Craft_NetHooks/blob/master/README.md",
+        "issues": "https://github.com/JungleMinds/Craft_NetHooks/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jungle Minds",
+            "homepage": "https://jungleminds.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "jungleminds\\nethooks\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "nethooks",
+        "handle": "nethooks",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/JungleMinds/Craft_NetHooks/master/CHANGELOG.md",
+        "class": "jungleminds\\nethooks\\Nethooks"
+    }
+}

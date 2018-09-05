@@ -1,0 +1,25 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * nethooks plugin for Craft CMS 3.x
+ *
+ * nethooks Settings.twig
+ *
+ * @author    Jungle Minds
+ * @copyright Copyright (c) 2018 Jungle Minds
+ * @link      https://jungleminds.com
+ * @package   Nethooks
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+    label: 'Netlify Build Hook',
+    instructions: 'add your <a href="https://www.netlify.com/docs/webhooks/#incoming-webhooks">Build Hook</a>',
+    id: 'buildHook',
+    name: 'buildHook',
+    placeholder: 'https://api.netlify.com/build_hooks/...',
+    value: settings['buildHook']})
+}}

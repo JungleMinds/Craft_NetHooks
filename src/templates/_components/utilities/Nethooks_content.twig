@@ -1,0 +1,38 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+* nethooks plugin for Craft CMS
+*
+* Nethooks Utility Content
+*
+* @author Jungle Minds
+* @copyright Copyright (c) 2018 Jungle Minds
+* @link https://jungleminds.com
+* @package Nethooks
+* @since 1.0.0
+*/
+#}
+{% set defaultBuildHook = 'https://api.netlify.com/build_hooks/...' %}
+<div class="deploy">
+  <div class="deploy-header">
+    <div class="readable left">
+      <h1>Nethooks</h1>
+    </div>
+    {% if buildHook|length > defaultBuildHook|length %}
+      <div class="buttons right">
+        <button
+          id="nethooks-deploy-button"
+          class="btn icon submit"
+          data-build-hook="{{buildHook}}"
+        >
+          {{ "Deploy"|t }}
+        </button>
+      </div>
+    {% endif %}
+  </div>
+  {% if buildHook|length <= defaultBuildHook|length %}
+    <div class="warning">
+      <p>{{ "Please add a webhook to the plugin settings first"|t }}</p>
+    </div>
+  {% endif %}
+</div>
