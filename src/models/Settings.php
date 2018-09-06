@@ -27,7 +27,7 @@ use craft\base\Model;
  *
  * @author    Jungle Minds
  * @package   Nethooks
- * @since     1.0.1
+ * @since     1.0.2
  */
 class Settings extends Model
 {

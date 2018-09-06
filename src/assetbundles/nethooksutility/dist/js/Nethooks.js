@@ -7,7 +7,7 @@
  * @copyright Copyright (c) 2018 Jungle Minds
  * @link      https://jungleminds.com
  * @package   Nethooks
- * @since     1.0.1
+ * @since     1.0.2
  */
 !function ($) {
   var deployButton = $('#nethooks-deploy-button');

@@ -21,7 +21,7 @@ use craft\base\Utility;
  *
  * @author    Jungle Minds
  * @package   Nethooks
- * @since     1.0.1
+ * @since     1.0.2
  */
 class NethooksUtility extends Utility
 {
