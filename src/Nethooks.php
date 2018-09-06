@@ -27,7 +27,7 @@ use yii\base\Event;
  *
  * @author    Jungle Minds
  * @package   Nethooks
- * @since     1.0.0
+ * @since     1.0.1
  *
  */
 class Nethooks extends Plugin
@@ -46,7 +46,7 @@ class Nethooks extends Plugin
     /**
      * @var string
      */
-    public $schemaVersion = '1.0.0';
+    public $schemaVersion = '1.0.1';
 
     // Public Methods
     // =========================================================================
