@@ -9,30 +9,34 @@
 * @copyright Copyright (c) 2018 Jungle Minds
 * @link https://jungleminds.com
 * @package Nethooks
-* @since 1.0.2
+* @since 1.1.2
 */
 #}
 {% set defaultBuildHook = 'https://api.netlify.com/build_hooks/...' %}
-<div class="deploy">
-  <div class="deploy-header">
+{% set defaultActive = buildHooks[0]['url'] == defaultBuildHook and buildHooks | length > 1 %}
+
+<div class="nethooks">
+  <div class="nethooks-header">
     <div class="readable left">
       <h1>Nethooks</h1>
     </div>
-    {% if buildHook|length > defaultBuildHook|length %}
-      <div class="buttons right">
-        <button
-          id="nethooks-deploy-button"
-          class="btn icon submit"
-          data-build-hook="{{buildHook}}"
-        >
-          {{ "Deploy"|t }}
-        </button>
-      </div>
-    {% endif %}
   </div>
-  {% if buildHook|length <= defaultBuildHook|length %}
+  {% if defaultActive %}
     <div class="warning">
       <p>{{ "Please add a webhook to the plugin settings first"|t }}</p>
+    </div>
+  {% else %}
+    <div class="hooks">
+      {% for i, buildHook in buildHooks %}
+        <div class="hook">
+          <button
+            class="btn icon submit"
+            data-build-hook="{{ buildHook['url'] }}"
+          >
+            {{ "Deploy"|t }} {{ buildHook['name'] }}
+          </button>
+        </div>
+      {% endfor %}
     </div>
   {% endif %}
 </div>

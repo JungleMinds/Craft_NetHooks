@@ -7,11 +7,11 @@
  * @copyright Copyright (c) 2018 Jungle Minds
  * @link      https://jungleminds.com
  * @package   Nethooks
- * @since     1.0.2
+ * @since     1.1.2
  */
 
-#content .deploy + .deploy { margin-top: 24px; }
-#content .deploy .deploy-header { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; padding-bottom: 10px; border-bottom: 1px solid #e3e5e8; margin-bottom: 16px; }
-#content .deploy .deploy-header .readable { -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; margin: 0; }
-#content .deploy .deploy-header .buttons { margin: 0; }
-#content .deploy .deploy-header .buttons button:disabled { pointer-events: none; }
+#content .nethooks + .nethooks { margin-top: 24px; }
+#content .nethooks .nethooks-header { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; padding-bottom: 10px; border-bottom: 1px solid #e3e5e8; margin-bottom: 16px; }
+#content .nethooks .nethooks-header .readable { -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; margin: 0; }
+#content .nethooks .hooks .hook { margin-bottom: 5px; }
+#content .nethooks .hooks .hook button:disabled { pointer-events: none; }

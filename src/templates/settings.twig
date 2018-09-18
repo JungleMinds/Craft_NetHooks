@@ -9,17 +9,42 @@
  * @copyright Copyright (c) 2018 Jungle Minds
  * @link      https://jungleminds.com
  * @package   Nethooks
- * @since     1.0.2
+ * @since     1.1.2
  */
 #}
 
 {% import "_includes/forms" as forms %}
 
-{{ forms.textField({
-    label: 'Netlify Build Hook',
-    instructions: 'add your <a href="https://www.netlify.com/docs/webhooks/#incoming-webhooks">Build Hook</a>',
-    id: 'buildHook',
-    name: 'buildHook',
-    placeholder: 'https://api.netlify.com/build_hooks/...',
-    value: settings['buildHook']})
-}}
+<div class="field">
+    <div class="heading">
+        <label for="buildHook">
+            Netlify Build Hook
+        </label>
+        <div class="instructions">
+            add your <a href="https://www.netlify.com/docs/webhooks/#incoming-webhooks">Build Hooks</a></br>
+            &nbsp;
+        </div>
+        <div class="input">
+            {{
+                forms.editableTable({
+                    id: 'buildHooks',
+                    name: 'buildHooks',
+                    addRowLabel: 'Add a buildHook',
+                    cols: {
+                        name: {
+                            heading: 'Name',
+                            type: 'singleline'
+                        },
+                        url: {
+                            heading: 'URL',
+                            type: 'singleline'
+                        }
+                    },
+                    rows: settings['buildHooks']
+                })
+            }}
+        </div>
+    </div>
+</div>
+
+

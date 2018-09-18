@@ -27,7 +27,7 @@ use craft\base\Model;
  *
  * @author    Jungle Minds
  * @package   Nethooks
- * @since     1.0.2
+ * @since     1.1.2
  */
 class Settings extends Model
 {
@@ -37,9 +37,12 @@ class Settings extends Model
     /**
      * Some field model attribute
      *
-     * @var string
+     * @var array
      */
-    public $buildHook = 'https://api.netlify.com/build_hooks/...';
+    public $buildHooks = [[
+        'name' => 'default',
+        'url' => 'https://api.netlify.com/build_hooks/...'
+    ]];
 
     // Public Methods
     // =========================================================================
@@ -57,8 +60,10 @@ class Settings extends Model
     public function rules()
     {
         return [
-            ['buildHook', 'string'],
-            ['buildHook', 'default', 'value' => 'https://api.netlify.com/build_hooks/...'],
+            ['buildHooks', 'default', 'value' => [[
+                'name' => 'default',
+                'url' => 'https://api.netlify.com/build_hooks/...'
+            ]]],
         ];
     }
 }

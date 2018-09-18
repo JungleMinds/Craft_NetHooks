@@ -4,7 +4,7 @@
 
 Add Deploy hooks for Netlify
 
-![Screemshot](resources/img/screenshot.jpg)
+![Screenshot](resources/img/screenshot.png)
 
 ## Requirements
 
@@ -26,15 +26,14 @@ To install the plugin, follow these instructions.
 
 ## NetHooks Overview
 
-This will add a Deploy Button to your Utilities.
+This will add a Deploy Buttons to your Utilities.
 
 ## Configuring NetHooks
 
-Go to NetHooks under settings and provide a Netlify Build Webhook [[?]](https://www.netlify.com/docs/webhooks/#incoming-webhooks)
+Go to NetHooks under settings and provide one or more Netlify Build Webhooks [[?]](https://www.netlify.com/docs/webhooks/#incoming-webhooks)
 
 ## NetHooks Roadmap
 
-* Expand the set-up to include setting deploy hooks
 * Provide an overview of deploys
 * deploy status
 

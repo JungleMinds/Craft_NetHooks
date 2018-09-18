@@ -21,7 +21,7 @@ use craft\base\Utility;
  *
  * @author    Jungle Minds
  * @package   Nethooks
- * @since     1.0.2
+ * @since     1.1.2
  */
 class NethooksUtility extends Utility
 {
@@ -70,7 +70,7 @@ class NethooksUtility extends Utility
         return Craft::$app->getView()->renderTemplate(
             'nethooks/_components/utilities/Nethooks_content',
             [
-                'buildHook' => Craft::$app->plugins->getPlugin('nethooks')->getSettings()->buildHook
+                'buildHooks' => Craft::$app->plugins->getPlugin('nethooks')->getSettings()->buildHooks
             ]
         );
     }

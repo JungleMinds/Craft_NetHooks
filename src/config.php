@@ -24,6 +24,9 @@
 
 return [
 
-    "buildHook" => 'https://api.netlify.com/build_hooks/...',
+    "buildHooks" => [[
+        'name' => 'default',
+        'url' => 'https://api.netlify.com/build_hooks/...'
+    ]],
 
 ];

@@ -7,25 +7,26 @@
  * @copyright Copyright (c) 2018 Jungle Minds
  * @link      https://jungleminds.com
  * @package   Nethooks
- * @since     1.0.2
+ * @since     1.1.2
  */
 !function ($) {
-  var deployButton = $('#nethooks-deploy-button');
-  if (deployButton) {
-    deployButton.on('click', function () {
-      $(deployButton).addClass('add loading');
-      $(deployButton).removeClass('submit');
-      $(deployButton).prop('disabled', true);
+  var deployButtons = $('#content .nethooks .hooks .hook button');
+  if (deployButtons) {
+    deployButtons.on('click', function () {
+      var _this = this
+      $(_this).addClass('add loading');
+      $(_this).removeClass('submit');
+      $(_this).prop('disabled', true);
       $.ajax({
         type: "POST",
-        url: $(deployButton).attr('data-build-hook'),
+        url: $(_this).attr('data-build-hook'),
         error: function () {
-          $(deployButton).removeClass('add loading');
-          $(deployButton).addClass('submit');
-          $(deployButton).prop('disabled', false);
+          $(_this).removeClass('add loading');
+          $(_this).addClass('submit');
+          $(_this).prop('disabled', false);
         },
         success: function () {
-          $(deployButton).removeClass('add loading');
+          $(_this).removeClass('add loading');
         }
       });
     });
