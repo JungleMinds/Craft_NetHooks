@@ -12,6 +12,7 @@ namespace jungleminds\nethooks;
 
 use jungleminds\nethooks\models\Settings;
 use jungleminds\nethooks\utilities\NethooksUtility;
+use jungleminds\nethooks\widgets\NethooksWidget;
 
 use Craft;
 use craft\base\Plugin;
@@ -19,6 +20,8 @@ use craft\services\Plugins;
 use craft\events\PluginEvent;
 use craft\services\Utilities;
 use craft\events\RegisterComponentTypesEvent;
+use craft\services\Dashboard;
+
 
 use yii\base\Event;
 
@@ -64,6 +67,14 @@ class Nethooks extends Plugin
             Utilities::EVENT_REGISTER_UTILITY_TYPES,
             function (RegisterComponentTypesEvent $event) {
                 $event->types[] = NethooksUtility::class;
+            }
+        );
+
+        Event::on(
+            Dashboard::class,
+            Dashboard::EVENT_REGISTER_WIDGET_TYPES,
+            function (RegisterComponentTypesEvent $event) {
+                $event->types[] = NethooksWidget::class;
             }
         );
 
