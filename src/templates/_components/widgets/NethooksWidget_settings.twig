@@ -1,0 +1,38 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * nethooks plugin for Craft CMS
+ *
+ * NethooksWidget Widget Settings
+ *
+* @author Jungle Minds
+* @copyright Copyright (c) 2018 Jungle Minds
+* @link https://jungleminds.com
+* @package Nethooks
+* @since 1.1.3
+ */
+#}
+
+
+{% import "_includes/forms" as forms %}
+
+
+{{ forms.checkbox({
+    label: 'Deploy buttons',
+    instructions: 'Choose functions.',
+    id: 'deployButtons',
+    name: 'deployButtons',
+    checked: widget['deployButtons'],
+    value: true})
+}}
+
+<br/>
+
+{{ forms.checkbox({
+    label: 'Netlify badges',
+    instructions: 'Choose functions.',
+    id: 'badges',
+    name: 'badges',
+    checked: widget['badges'],
+    value: true})
+}}

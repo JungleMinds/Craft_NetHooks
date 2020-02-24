@@ -1,0 +1,69 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * nethooks plugin for Craft CMS
+ *
+ * NethooksWidget Widget Body
+ *
+* @author Jungle Minds
+* @copyright Copyright (c) 2018 Jungle Minds
+* @link https://jungleminds.com
+* @package Nethooks
+* @since 1.1.3
+ */
+#}
+
+{% set defaultBuildHook = 'https://api.netlify.com/build_hooks/...' %}
+{% set defaultBuildHookActive = buildHooks[0]['url'] == defaultBuildHook and buildHooks | length > 1 %}
+{% set defaultBadge = '[![Netlify Status](https://api.netli...' %}
+{% set defaultBadgeActive = buildHooks[0]['badge'] == defaultBadge and buildHooks | length > 1 %}
+
+<div class="nethooks">
+    {% if (defaultBuildHookActive and deployButtons) or (defaultBadgeActive and badges) %}
+        <div class="warning">
+            <p>{{ "Please add a webhook to the plugin settings first"|t }}</p>
+        </div>
+    {% else %}
+        <table class="hooks table data fullwidth">
+            <tr>
+                <th>
+                    Name
+                </th>
+                {% if deployButtons %}
+                    <th>
+                        Deploy site
+                    </th>
+                {% endif %}
+                {% if badges %}
+                    <th>
+                        Badge
+                    </th>
+                {% endif %}
+            </tr>
+            {% for i, buildHook in buildHooks %}
+                <tr class="hook">
+                    <td>
+                        {{ buildHook['name'] }}
+                    </td>
+                    {% if deployButtons %}
+                        <td>
+                            <button class="btn icon submit" data-build-hook="{{ buildHook['url'] }}">
+                                {{ "Deploy"|t }}
+                            </button>
+                        </td>
+                    {% endif %}
+                    {% if badges %}
+                        <td>
+                            {{ buildHook['badge']|markdown }}
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    {% if badges %}
+        <div>
+            <span class="small light">Refresh for status updates</span>
+        </div>
+    {% endif %}
+</div>
