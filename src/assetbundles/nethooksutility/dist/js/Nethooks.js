@@ -10,7 +10,7 @@
  * @since     1.1.2
  */
 !function ($) {
-  var deployButtons = $('#content .nethooks .hooks .hook button');
+  var deployButtons = $('.nethooks .hooks .hook button');
   if (deployButtons) {
     deployButtons.on('click', function () {
       var _this = this
