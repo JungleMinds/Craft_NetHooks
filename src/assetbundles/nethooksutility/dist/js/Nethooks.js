@@ -35,7 +35,6 @@
   var buildkiteDeployButtons = $('.nethooks .buildkite .hooks .hook button');
   if (buildkiteDeployButtons) {
     buildkiteDeployButtons.on('click', function () {
-      console.log('Buildkite');
       var _this = this
       $(_this).addClass('add loading');
       $(_this).removeClass('submit');
