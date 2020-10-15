@@ -51,4 +51,48 @@
     </div>
 </div>
 
+<div class="field">
+    <div class="heading">
+        <label for="buildHook">
+            Buildkite Build Hook
+        </label>
+        <div class="instructions">
+            add your <a href="https://buildkite.com/docs/apis/rest-api/builds#create-a-build">Build Hooks</a></br>
+            &nbsp;
+        </div>
+        <div class="input">
+            {{
+                forms.editableTable({
+                    id: 'buildkiteBuildHooks',
+                    name: 'buildkiteBuildHooks',
+                    addRowLabel: 'Add a buildHook',
+                    cols: {
+                        name: {
+                            heading: 'Name',
+                            type: 'singleline'
+                        },
+                        pipelineSlug: {
+                            heading: 'Pipeline slug',
+                            type: 'singleline'
+                        },
+                        branch: {
+                            heading: 'Branch',
+                            type: 'singleline'
+                        },
+                        commit: {
+                            heading: 'Commit',
+                            type: 'singleline'
+                        },
+                        badge: {
+                            heading: 'Badge',
+                            type: 'singleline'
+                        }
+                    },
+                    rows: settings['buildkiteBuildHooks']
+                })
+            }}
+        </div>
+    </div>
+</div>
+
 

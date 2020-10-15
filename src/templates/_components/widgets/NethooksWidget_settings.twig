@@ -36,3 +36,38 @@
     checked: widget['badges'],
     value: true})
 }}
+
+<br/>
+<br/>
+
+
+{{ forms.checkbox({
+    label: 'Show buildkite',
+    instructions: 'Choose functions.',
+    id: 'showBuildkite',
+    name: 'showBuildkite',
+    checked: widget['showBuildkite'],
+    value: true})
+}}
+
+<br/>
+
+{{ forms.checkbox({
+    label: 'Buildkite deploy buttons',
+    instructions: 'Choose functions.',
+    id: 'buildkiteDeployButtons',
+    name: 'buildkiteDeployButtons',
+    checked: widget['buildkiteDeployButtons'],
+    value: true})
+}}
+
+<br/>
+
+{{ forms.checkbox({
+    label: 'Buildkite badges',
+    instructions: 'Choose functions.',
+    id: 'buildkiteBadges',
+    name: 'buildkiteBadges',
+    checked: widget['buildkiteBadges'],
+    value: true})
+}}

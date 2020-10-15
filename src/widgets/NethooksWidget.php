@@ -40,6 +40,18 @@ class NethooksWidget extends Widget
      */
     public $deployButtons = false;
     public $badges = false;
+    public $showBuildkite = false;
+    public $buildkiteDeployButtons = false;
+    public $buildkiteBadges = false;
+
+    // Private Properties
+    // =========================================================================
+
+    private $buildkite_bearer_token;
+
+    function __construct() {
+        $this->buildkite_bearer_token = getenv('BUILDKITE_BEARER_TOKEN');
+    }
 
     // Static Methods
     // =========================================================================
@@ -51,7 +63,7 @@ class NethooksWidget extends Widget
      */
     public static function displayName(): string
     {
-        return Craft::t('nethooks', 'Netlify deployments');
+        return Craft::t('nethooks', 'Deployments');
     }
 
 
@@ -88,6 +100,12 @@ class NethooksWidget extends Widget
                 ['badges', 'boolean'],
                 ['deployButtons', 'default', 'value' => false],
                 ['deployButtons', 'default', 'value' => false],
+
+                ['buildkiteDeployButtons', 'boolean'],
+                ['buildkiteBadges', 'default', 'value' => false],
+
+                ['showBuildkite', 'boolean'],
+                ['showBuildkite', 'default', 'value' => false],
             ]
         );
         return $rules;
@@ -211,7 +229,12 @@ class NethooksWidget extends Widget
             [
                 'deployButtons' => $this->deployButtons,
                 'badges' => $this->badges,
-                'buildHooks' => Craft::$app->plugins->getPlugin('nethooks')->getSettings()->buildHooks
+                'buildkiteDeployButtons' => $this->buildkiteDeployButtons,
+                'buildkiteBadges' => $this->buildkiteBadges,
+                'showBuildkite' => $this->showBuildkite,
+                'buildHooks' => Craft::$app->plugins->getPlugin('nethooks')->getSettings()->buildHooks,
+                'buildkiteBuildHooks' => Craft::$app->plugins->getPlugin('nethooks')->getSettings()->buildkiteBuildHooks,
+                'buildkite_bearer_token' => $this->buildkite_bearer_token,
             ]
         );
     }

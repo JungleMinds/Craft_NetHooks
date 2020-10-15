@@ -18,52 +18,128 @@
 {% set defaultBadge = '[![Netlify Status](https://api.netli...' %}
 {% set defaultBadgeActive = buildHooks[0]['badge'] == defaultBadge and buildHooks | length > 1 %}
 
+{% set defaultBuildkitePipelineSlug = 'pipeline-slug' %}
+{% set defaultBuildkitePipelineSlugActive = buildkiteBuildHooks[0]['pipelineSlug'] == defaultBuildkitePipelineSlug and buildkiteBuildHooks | length == 1 %}
+{% set defaultBuildkiteBadge = '[![Build status](https://badge.buildkite.com/...' %}
+{% set defaultBuildkiteBadgeActive = buildkiteBuildHooks[0]['badge'] == defaultBuildkiteBadge and buildkiteBuildHooks | length == 1 %}
+
 <div class="nethooks">
-    {% if (defaultBuildHookActive and deployButtons) or (defaultBadgeActive and badges) %}
-        <div class="warning">
-            <p>{{ "Please add a webhook to the plugin settings first"|t }}</p>
-        </div>
-    {% else %}
-        <table class="hooks table data fullwidth">
-            <tr>
-                <th>
-                    Name
-                </th>
-                {% if deployButtons %}
+    <div class="netlify hooks-container">
+        <h3>Netlify</h3>
+        {% if (defaultBuildHookActive and deployButtons) or (defaultBadgeActive and badges) %}
+            <div class="warning">
+                <p>{{ "Please add a webhook to the plugin settings first"|t }}</p>
+            </div>
+        {% else %}
+            <table class="hooks table data fullwidth">
+                <tr>
                     <th>
-                        Deploy site
+                        Name
                     </th>
-                {% endif %}
-                {% if badges %}
-                    <th>
-                        Badge
-                    </th>
-                {% endif %}
-            </tr>
-            {% for i, buildHook in buildHooks %}
-                <tr class="hook">
-                    <td>
-                        {{ buildHook['name'] }}
-                    </td>
                     {% if deployButtons %}
-                        <td>
-                            <button class="btn icon submit" data-build-hook="{{ buildHook['url'] }}">
-                                {{ "Deploy"|t }}
-                            </button>
-                        </td>
+                        <th>
+                            Deploy site
+                        </th>
                     {% endif %}
                     {% if badges %}
-                        <td>
-                            {{ buildHook['badge']|markdown }}
-                        </td>
+                        <th>
+                            Badge
+                        </th>
                     {% endif %}
                 </tr>
-            {% endfor %}
-        </table>
-    {% endif %}
-    {% if badges %}
-        <div>
-            <span class="small light">Refresh for status updates</span>
+                {% for i, buildHook in buildHooks %}
+                    <tr class="hook">
+                        <td>
+                            {{ buildHook['name'] }}
+                        </td>
+                        {% if deployButtons %}
+                            <td>
+                                <button class="btn icon submit" data-build-hook="{{ buildHook['url'] }}">
+                                    {{ "Deploy"|t }}
+                                </button>
+                            </td>
+                        {% endif %}
+                        {% if badges %}
+                            <td>
+                                {{ buildHook['badge']|markdown }}
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+        {% if badges %}
+            <div class="refresh">
+                <span class="small light">Refresh for status updates</span>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="line"></div>
+
+    {% if showBuildkite %}
+
+        <div class="buildkite hooks-container">
+            <h3>Buildkite</h3>
+
+            {% if (defaultBuildkitePipelineSlugActive and buildkiteDeployButtons) or (defaultBuildkiteBadgeActive and buildkiteBadges) %}
+                <div class="warning">
+                    <p>{{ "Please add a webhook to the plugin settings first"|t }}</p>
+                </div>
+            {% else %}
+                <table class="hooks table data fullwidth">
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Branch
+                        </th>
+                        {% if buildkiteDeployButtons %}
+                            <th>
+                                Deploy site
+                            </th>
+                        {% endif %}
+                        {% if buildkiteBadges %}
+                            <th>
+                                Badge
+                            </th>
+                        {% endif %}
+                    </tr>
+                    {% for i, buildHook in buildkiteBuildHooks %}
+                        <tr class="hook">
+                            <td>
+                                {{ buildHook['name'] }}
+                            </td>
+                            <td>
+                                {{ buildHook['branch'] }}
+                            </td>
+                            {% if buildkiteDeployButtons %}
+                                <td>
+                                    <button class="btn icon submit"
+                                            data-build-pipeline="{{ buildHook['pipelineSlug'] }}"
+                                            data-build-commit="{{ buildHook['commit'] }}"
+                                            data-build-branch="{{ buildHook['branch'] }}"
+                                            data-buildkite-bearer-token="{{ buildkite_bearer_token }}">
+                                        {{ "Deploy"|t }}
+                                    </button>
+                                </td>
+                            {% endif %}
+                            {% if buildkiteBadges %}
+                                <td>
+                                    {{ buildHook['badge']|markdown }}
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+            {% if buildkiteBadges %}
+                <div class="refresh">
+                    <span class="small light">Refresh for status updates</span>
+                </div>
+            {% endif %}
         </div>
     {% endif %}
+
 </div>
