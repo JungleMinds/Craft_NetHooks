@@ -28,13 +28,16 @@
   {% else %}
     <div class="hooks">
       {% for i, buildHook in buildHooks %}
-        <div class="hook">
+        <div class="hook flex flex-wrap items-center">
           <button
             class="btn icon submit"
             data-build-hook="{{ buildHook['url'] }}"
           >
             {{ "Deploy"|t }} {{ buildHook['name'] }}
           </button>
+          {% if buildHook['badge']|length %}
+            {{ buildHook['badge']|markdown }}
+          {% endif %}
         </div>
       {% endfor %}
     </div>

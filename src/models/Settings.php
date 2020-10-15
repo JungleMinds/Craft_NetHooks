@@ -41,7 +41,21 @@ class Settings extends Model
      */
     public $buildHooks = [[
         'name' => 'default',
-        'url' => 'https://api.netlify.com/build_hooks/...'
+        'url' => 'https://api.netlify.com/build_hooks/...',
+        'badge' => '[![Netlify Status](https://api.netli...',
+    ]];
+
+     /**
+     * Some field model attribute
+     *
+     * @var array
+     */
+    public $buildkiteBuildHooks = [[
+        'name' => 'default',
+        'branch' => 'development',
+        'commit' => 'HEAD',
+        'pipelineSlug' => 'pipeline-slug',
+        'badge' => '[![Build status](https://badge.buildkite.com/...',
     ]];
 
     // Public Methods
@@ -62,7 +76,15 @@ class Settings extends Model
         return [
             ['buildHooks', 'default', 'value' => [[
                 'name' => 'default',
-                'url' => 'https://api.netlify.com/build_hooks/...'
+                'url' => 'https://api.netlify.com/build_hooks/...',
+                'badge' => '[![Netlify Status](https://api.netli...',
+            ]]],
+            ['buildkiteBuildHooks', 'default', 'value' => [[
+                'name' => 'default',
+                'branch' => 'development',
+                'commit' => 'HEAD',
+                'pipelineSlug' => 'pipeline-slug',
+                'badge' => '[![Build status](https://badge.buildkite.com/...',
             ]]],
         ];
     }
